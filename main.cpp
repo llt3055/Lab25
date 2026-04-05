@@ -17,9 +17,10 @@ int main() {
     set<string> s;
     string nm;
 
-    long long vRead, lRead, sRead;
-    long long vSort, lSort, sSort;
-    long long vIns, lIns, sIns;
+    long  vRead, lRead, sRead;
+    long  vSort, lSort, sSort;
+    long  vIns, lIns, sIns;
+    long  vDel, lDel, sDel;
 
     // read codes.txt into vector
     auto start = high_resolution_clock::now();
@@ -73,20 +74,37 @@ int main() {
     
 
     // List Insert
-    auto itL = l.begin();
     start = high_resolution_clock::now();
-    advance(itL, l.size());
-    end = high_resolution_clock::now();
+    auto itL = l.begin();
+    advance(itL, l.size() / 2);
     l.insert(itL, "TESTCODE");
-    duration = duration_cast<nanoseconds>(end - start -1);
+    end = high_resolution_clock::now();
+    duration = duration_cast<nanoseconds>(end - start);
     lIns = duration.count();
 
-    // Set Insert
-
+   // Set Insert
+    start = high_resolution_clock::now();
+    s.insert("TESTCODE");
+    end = high_resolution_clock::now();
     duration = duration_cast<nanoseconds>(end - start);
+    sIns = duration.count();
+
+    // Vector Delete
     start = high_resolution_clock::now();
     end = high_resolution_clock::now();
-    sIns = duration.count();
+    v.erase(v.begin() + v.size()+1);
+    
+
+    // List Delete
+    start = high_resolution_clock::now();
+    itL = l.begin();
+    advance(itL, l.size() / 2);
+    l.erase(itL);
+    end = high_resolution_clock::now();
+    duration = duration_cast<nanoseconds>(end - start);
+    lDel = duration.count();
+ 
+    vDel = duration.count();
 
     return 0;
 }
