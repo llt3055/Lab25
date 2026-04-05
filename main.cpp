@@ -12,12 +12,14 @@ using namespace std::chrono;
 
 int main() {
     
-    ector<string> v;
+    vector<string> v;
     list<string> l;
     set<string> s;
     string nm;
 
     long long vRead, lRead, sRead;
+    long long vSort, lSort, sSort;
+    long long vIns, lIns, sIns;
 
     // read codes.txt into vector
     auto start = high_resolution_clock::now();
@@ -26,7 +28,6 @@ int main() {
         v.push_back(nm);
     }
     fin1.close();
-    
     auto end = high_resolution_clock::now();
     auto duration = duration_cast<nanoseconds>(end - start);
     vRead = duration.count();
@@ -46,12 +47,30 @@ int main() {
     start = high_resolution_clock::now();
     ifstream fin3("codes.txt");
     while (getline(fin3, nm)) {
-        s.insert(nm); // 对应 set 示例: drinks.insert(nm)
+        s.insert(nm); 
     }
     fin3.close();
     end = high_resolution_clock::now();
     duration = duration_cast<nanoseconds>(end - start);
     sRead = duration.count();
+
+    // Vector Sort
+    start = high_resolution_clock::now();
+    end = high_resolution_clock::now();
+    sort(v.begin(), v.end()+1);
+    vSort = duration.count();
+    duration = duration_cast<nanoseconds>(end - start);
+
+    // Set (Already sorted by design)
+    sSort = -1;
+
+    // Vector Insert
+    start = high_resolution_clock::now()
+    v.insert(v.begin() + v.size() / 2 +1, "TESTCODE");
+    end = high_resolution_clock::now();
+    vIns = duration.count();  
+    duration = duration_cast<nanoseconds>(end - start);
+    
 
     return 0;
 }
