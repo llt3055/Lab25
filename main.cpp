@@ -1,6 +1,14 @@
 #include <iostream>
 #include <chrono>
+#include <vector>
+#include <list>
+#include <set>
+#include <fstream>
+#include <string>
+#include <algorithm>
+#include <iomanip>
 using namespace std;
+using namespace std::chrono;
 
 int main() {
     
@@ -10,7 +18,7 @@ int main() {
     string nm;
 
     long long vRead, lRead, sRead;
-    
+
     // read codes.txt into vector
     auto start = high_resolution_clock::now();
     ifstream fin1("codes.txt");
@@ -33,6 +41,17 @@ int main() {
     end = high_resolution_clock::now();
     duration = duration_cast<nanoseconds>(end - start);
     lRead = duration.count();
+
+    // Set Read
+    start = high_resolution_clock::now();
+    ifstream fin3("codes.txt");
+    while (getline(fin3, nm)) {
+        s.insert(nm); // 对应 set 示例: drinks.insert(nm)
+    }
+    fin3.close();
+    end = high_resolution_clock::now();
+    duration = duration_cast<nanoseconds>(end - start);
+    sRead = duration.count();
 
     return 0;
 }
