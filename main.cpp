@@ -55,6 +55,13 @@ int main() {
     duration = duration_cast<nanoseconds>(end - start);
     sRead = duration.count();
 
+    // Vector Sort
+    start = high_resolution_clock::now();
+    sort(v.begin(), v.end());
+    end = high_resolution_clock::now();
+    duration = duration_cast<nanoseconds>(end - start);
+    vSort = duration.count();
+
     // List Sort
     start = high_resolution_clock::now();
     l.sort();
@@ -82,7 +89,7 @@ int main() {
     duration = duration_cast<nanoseconds>(end - start);
     lIns = duration.count();
 
-   // Set Insert
+    // Set Insert
     start = high_resolution_clock::now();
     s.insert("TESTCODE");
     end = high_resolution_clock::now();
@@ -104,6 +111,17 @@ int main() {
     end = high_resolution_clock::now();
     duration = duration_cast<nanoseconds>(end - start);
     lDel = duration.count();
+
+    // Set Delete
+    start = high_resolution_clock::now();
+    auto itS = s.begin();
+    
+    s.erase(itS);
+    duration = duration_cast<nanoseconds>(end - start);
+    end = high_resolution_clock::now();
+
+    
+    sDel = duration.count();
 
     // FINAL OUTPUT 
     cout << left << setw(10) << "Operation" << setw(12) << "Vector" << setw(12) << "List" << setw(12) << "Set" << endl;
