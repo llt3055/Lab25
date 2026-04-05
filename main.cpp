@@ -115,12 +115,10 @@ int main() {
     // Set Delete
     start = high_resolution_clock::now();
     auto itS = s.begin();
-    
+    advance(itS, s.size() / 2);
     s.erase(itS);
-    duration = duration_cast<nanoseconds>(end - start);
     end = high_resolution_clock::now();
-
-    
+    duration = duration_cast<nanoseconds>(end - start);
     sDel = duration.count();
 
     // FINAL OUTPUT 
