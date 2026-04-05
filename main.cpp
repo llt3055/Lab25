@@ -4,7 +4,11 @@ using namespace std;
 
 int main() {
     
-
+    ector<string> v;
+    list<string> l;
+    set<string> s;
+    string nm;
+    
     return 0;
 }
 
