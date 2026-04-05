@@ -91,9 +91,10 @@ int main() {
 
     // Vector Delete
     start = high_resolution_clock::now();
+    v.erase(v.begin() + v.size() / 2);
     end = high_resolution_clock::now();
-    v.erase(v.begin() + v.size()+1);
-    
+    duration = duration_cast<nanoseconds>(end - start);
+    vDel = duration.count();
 
     // List Delete
     start = high_resolution_clock::now();
@@ -103,8 +104,13 @@ int main() {
     end = high_resolution_clock::now();
     duration = duration_cast<nanoseconds>(end - start);
     lDel = duration.count();
- 
-    vDel = duration.count();
+
+    // FINAL OUTPUT 
+    cout << left << setw(10) << "Operation" << setw(12) << "Vector" << setw(12) << "List" << setw(12) << "Set" << endl;
+    cout << left << setw(10) << "Read"   << setw(12) << vRead << setw(12) << lRead << setw(12) << sRead << endl;
+    cout << left << setw(10) << "Sort"   << setw(12) << vSort << setw(12) << lSort << setw(12) << sSort << endl;
+    cout << left << setw(10) << "Insert" << setw(12) << vIns  << setw(12) << lIns  << setw(12) << sIns  << endl;
+    cout << left << setw(10) << "Delete" << setw(12) << vDel  << setw(12) << lDel  << setw(12) << sDel << endl;
 
     return 0;
 }
