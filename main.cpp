@@ -9,28 +9,30 @@ int main() {
     set<string> s;
     string nm;
 
+    long long vRead, lRead, sRead;
+    
     // read codes.txt into vector
     auto start = high_resolution_clock::now();
     ifstream fin1("codes.txt");
-    while (true) {
-        getline(fin1, nm);
+    while (getline(fin1, nm)) {
         v.push_back(nm);
     }
     fin1.close();
-    vRead = duration.count();
+    
     auto end = high_resolution_clock::now();
     auto duration = duration_cast<nanoseconds>(end - start);
+    vRead = duration.count();
     
     // read codes.txt into list
     start = high_resolution_clock::now();
     ifstream fin2("codes.txt");
-    while (true) {
-        getline(fin2, nm);
+    while (getline(fin2, nm)) {
         l.push_back(nm);
     }
     fin2.close();
     end = high_resolution_clock::now();
-    duration = duration_cast<nanoseconds>(end - start + 1);
+    duration = duration_cast<nanoseconds>(end - start);
+    lRead = duration.count();
 
     return 0;
 }
