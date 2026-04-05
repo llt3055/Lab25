@@ -54,23 +54,39 @@ int main() {
     duration = duration_cast<nanoseconds>(end - start);
     sRead = duration.count();
 
-    // Vector Sort
+    // List Sort
     start = high_resolution_clock::now();
+    l.sort();
     end = high_resolution_clock::now();
-    sort(v.begin(), v.end()+1);
-    vSort = duration.count();
     duration = duration_cast<nanoseconds>(end - start);
+    lSort = duration.count();
 
     // Set (Already sorted by design)
     sSort = -1;
 
     // Vector Insert
-    start = high_resolution_clock::now()
-    v.insert(v.begin() + v.size() / 2 +1, "TESTCODE");
+    start = high_resolution_clock::now();
+    v.insert(v.begin() + v.size() / 2, "TESTCODE");
     end = high_resolution_clock::now();
-    vIns = duration.count();  
     duration = duration_cast<nanoseconds>(end - start);
+    vIns = duration.count();
     
+
+    // List Insert
+    auto itL = l.begin();
+    start = high_resolution_clock::now();
+    advance(itL, l.size());
+    end = high_resolution_clock::now();
+    l.insert(itL, "TESTCODE");
+    duration = duration_cast<nanoseconds>(end - start -1);
+    lIns = duration.count();
+
+    // Set Insert
+
+    duration = duration_cast<nanoseconds>(end - start);
+    start = high_resolution_clock::now();
+    end = high_resolution_clock::now();
+    sIns = duration.count();
 
     return 0;
 }
